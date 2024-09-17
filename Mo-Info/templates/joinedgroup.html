@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<style>
+    body {
+        background: linear-gradient(135deg, rgb(28, 33, 54), #121424);
+    }
+
+    table {
+        border-collapse: collapse;
+        background-color: white;
+        border-radius: 20px;
+        margin: auto;
+    }
+
+    th {
+        font-size: large;
+    }
+
+    th, td {
+        border: 2px solid black;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .parent {
+        display: flex;
+    }
+
+    .button_a {
+        text-decoration: none;
+    }
+
+    .button{
+        transition: 500ms all ease;
+    }
+
+    .button:hover{
+        transform: scale(1.1);
+        cursor: pointer;
+    }
+
+    #b_join{
+        justify-self: center;
+        align-self: center;
+        color: aliceblue;
+        width: 300px;
+        height: 60px;
+        font-size: large;
+        padding: auto;
+        border-radius: 50px;
+        background-color:  #340f62;
+        border: 2px solid #2d0c55;
+        position: relative;
+        z-index: 1;
+    }
+
+    #b_join:before{
+        transition: 0.5s all ease;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        right: 50%;
+        bottom: 0;
+        opacity: 0;
+        content: " ";
+        background-color: #2d0c55;
+        border: 2px solid#340f62;
+        border-radius: 50px;
+    }
+
+    #b_join:hover:before{
+        transition: 0.5s all ease;
+        left: 0;
+        right: 0;
+        opacity: 1;
+        z-index: -1;
+    }
+
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="parent">
+    <table>
+        <tr>
+            <th>Group Owner</th>
+            <th>Course Code</th>
+            <th>Group Name</th>
+            <th>Participants</th>
+        </tr>
+
+        <tr>
+            <td>{{ data['owner'] }}</td>
+            <td>{{ data['coursecode'] }}</td>
+            <td>{{ data['groupname'] }}</td>
+            <td>{{ data['members']|length }}</td>
+        </tr>
+
+        <tr>
+            <th colspan="4">Participants Names</th>
+        </tr>
+
+        <tr>
+            <td colspan="4">
+                {% if data['members']|length < 1 %}
+                    SORRY NO MEMEBRS TO SEE HERE :&lpar;
+                {% else %}
+                    <ol>
+                        {% for member in data['members'] %}
+                            <li>{{member}}</li>
+                        {% endfor %}
+                    </ol>
+                {% endif %}
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="4">
+                <a class="button_a" href="/leavegroup/{{username}}/{{data['group_id']}}">
+                    <button id="b_join" class="button">LEAVE</button>
+                </a>
+            </td>
+        </tr>
+    </table>
+</div>
+{% endblock %}

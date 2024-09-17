@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mo' Info</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+    </head>
+    <body>
+        <div class="hero">
+            <nav>
+                <div class="img"><img src="{{ url_for('static', filename='img/image.png') }}" alt="Logo"></div>
+                <h2 class="logo_text"><a href="/">Mo' INFO</a></h2>
+
+                <ul>
+                    <li><a href="/find">Find</a></li>
+                    <li><a href="/create">Create</a></li>
+                    <li><a href="/notes">Notetaker</a></li>
+                    <li><a href="/about">About</a></li>
+                </ul>
+            </nav>
+        </div>
+        <main>
+            <div class="find">
+                <div class="fsmall">
+                    <h2>Find other study groups</h2>
+                    <a class="button_a" href="/find">
+                        <button id="b_find" class="button">FIND</button>
+                    </a>
+                </div>
+                <hr>
+            </div>
+            
+            <div class="create">
+                <div class="csmall">
+                    <h2>Create a study group</h2>
+                    <a class="button_a" href="/create">
+                        <button id="b_create" class="button">CREATE</button>
+                    </a>
+                </div>
+            </div>
+            <div class="back">
+                <p>Excel in your studies and find like-minded people</p>
+            </div>
+        </main>  
+    </body>
+</html>

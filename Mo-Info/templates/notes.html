@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mo' Info</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/notes.css')}}">
+    <style>
+        .notes-container{
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <nav>
+            <div class="img"><img src="{{ url_for('static', filename='img/image.png') }}" alt="Logo"></div>
+            <h2 class="logo_text"><a href="/">Mo' INFO</a></h2>
+
+            <ul>
+                <li><a href="/find">Find</a></li>
+                <li><a href="/create">Create</a></li>
+                <li><a href="/notes">Notetaker</a></li>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="container">
+        <h1><img src="{{ url_for('static', filename='img/post-it.png') }}"> Notetaker</h1>
+        <button class="btn"><img src="{{ url_for('static', filename='img/edit.png') }}">Take notes</button>
+        <div class="notes-container">
+            <p contenteditable="true" class="input-box">
+                <img src="{{ url_for('static', filename='img/delete.png') }}" alt="">
+            </p>
+        </div>
+    </div>
+    
+    <script>
+        const notesContainer = document.querySelector(".notes-container");
+        const createBtn = document.querySelector(".btn");
+        let notes = document.querySelectorAll(".input-box");
+
+        function updateStorage(){
+            localStorage.setItem("notes", notesContainer.innerHTML)
+        }
+
+        function showNotes(){
+            notesContainer.innerHTML = localStorage.getItem("notes");
+        }
+
+        createBtn.addEventListener("click", ()=>{
+            let inputBox = document.createElement("p");
+            let img = document.createElement("img");
+            inputBox.className = "input-box";
+            inputBox.setAttribute("contenteditable", "true")
+            img.src = "{{ url_for('static', filename='img/delete.png') }}";
+            notesContainer.appendChild(inputBox).appendChild(img);
+        });
+        
+        notesContainer.addEventListener("click", function(e) {
+        if(e.target.tagName === "IMG") {
+            e.target.parentElement.remove();
+            updateStorage()
+        }
+        else if(e.target.tagName==="p"){
+            notes = document.querySelectorAll(".input-box");
+            notes.forEach(nt =>{
+                nt.onekeyup = function(){
+                    updateStorage();
+                }
+            })
+        }
+        });
+
+        document.addEventListener("keydown", event =>{
+            if(event.key ==="Enter")
+            document.execCommand("insertLineBreak");
+            event.preventDefault();
+        })
+
+    </script>
+</body>
+</html>
