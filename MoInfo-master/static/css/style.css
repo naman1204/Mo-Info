@@ -1,0 +1,214 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "poppins", sans-serif;
+    box-sizing: border-box;
+}
+
+.hero{
+    background: #0c1424;
+    width: 100%;
+    color: #fff;
+    position: relative;
+}
+
+nav{
+    display: flex;
+    align-items: center;
+    padding: 10px 3%;
+    box-shadow: 0px 0px 6px black;
+}
+
+.img img{
+    width: 50px;
+    height: 50px;
+}
+nav img{
+    width: 100%;
+    cursor: pointer;
+    margin: 5px 10px;
+
+}
+
+nav h2 a{
+    text-decoration: none;
+    color: white;
+    font-family: 'Lilita One', sans-serif;
+}
+
+nav h2:hover{
+    cursor: pointer;
+}
+nav ul{ 
+    flex: 1;
+    text-align: right;
+    margin: 0 20px;
+}
+
+nav ul li{
+    font-size: 16pt;
+    padding-left: 50px;
+    display: inline-block;
+    list-style: none;
+    margin: 0 40px;
+}
+
+nav ul li a{
+    border-radius: 18px;
+    align-items: center;
+    padding: 8px 20px 11px 20px;
+    transition: 300ms all ease;
+    text-decoration: none;
+    color: white;
+}
+
+nav ul a:hover{
+    background-color: rgba(255, 255, 255, 0.186);
+    border-radius: 25px;
+}
+
+main{
+
+    color: white;
+    display: grid;
+    grid-template-columns: 4% 46% 46% 4%;
+    grid-template-rows: 400px 400px;
+    grid-template-areas: 
+    ". find back ."
+    ". create back .";
+    background: radial-gradient(circle at 100% 600px, rgba(0, 0, 0, 0.59) 45%, #021339d7 15%, #101723, #101926, #0d151d);
+    z-index: 1;
+}
+
+body{
+    background-image: url(/static/img/background2.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 400px 20px;
+    z-index: -1;
+}
+.find{
+    height: fit-content;
+    width: 75%;
+    margin: auto;
+    margin-bottom: 10px;
+    grid-area: find;
+
+}
+
+hr{
+    border: 1px solid rgba(204, 204, 204, 0.055);
+    border-radius: 10px;
+}
+.create{
+    height: fit-content;
+    width: 75%;
+    margin:auto;
+    margin-top: 5px;
+    grid-area: create;
+}
+main h2{
+    margin: 30px;
+    text-align: left
+}
+.back{
+    margin: 30% 10% auto 30%;
+    grid-area: back;
+}
+
+#b_create{
+    width: 300px;
+    height: 60px;
+    font-size: large;
+    padding: auto;
+    border-radius: 50px;
+    background-color:#0b276f;
+    color: aliceblue;
+    border: 2px solid #081e56;
+}
+
+#b_find{
+    color: aliceblue;
+    width: 300px;
+    height: 60px;
+    font-size: large;
+    padding: auto;
+    border-radius: 50px;
+    background-color:  #340f62;
+    border: 2px solid #2d0c55;
+    margin-bottom: 10%;
+    position: relative;
+    z-index: 1;
+}
+
+.fsmall, .csmall{
+    width: 70%;
+    text-align: center;
+}
+
+.button{
+    transition: 500ms all ease;
+}
+
+.button:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+
+#b_find:before{
+    transition: 0.5s all ease;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    right: 50%;
+    bottom: 0;
+    opacity: 0;
+    content: " ";
+    background-color: #2d0c55;
+    border: 2px solid#340f62;
+    border-radius: 50px;
+}
+
+#b_find:hover:before{
+
+    transition: 0.5s all ease;
+    left: 0;
+    right: 0;
+    opacity: 1;
+    z-index: -1;
+}
+
+#b_create:before{
+    transition: 0.5s all ease;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    right: 50%;
+    bottom: 0;
+    opacity: 0;
+    content: " ";
+    background-color: #081e56;
+    border: 2px solid#0b276f;
+    border-radius: 50px;
+}
+
+#b_create:hover:before{
+
+    transition: 0.5s all ease;
+    left: 0;
+    right: 0;
+    opacity: 1;
+    z-index: -1;
+}
+
+
+.back p{
+    font-size: 22pt;
+    text-align: right;
+    text-shadow: 0 0 20px #ffffff;
+}
+
+.button_a {
+    text-decoration: none;
+}

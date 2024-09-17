@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mo' Info</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+        
+        <style> 
+            *{
+                margin: 0;
+                padding: 0;
+                font-family: "poppins", sans-serif;
+                box-sizing: border-box;
+            }
+
+            .hero{
+                background: #0c1424;
+                width: 100%;
+                color: #fff;
+                position: relative;
+            }
+
+            nav{
+                display: flex;
+                align-items: center;
+                padding: 10px 3%;
+                box-shadow: 0px 0px 6px black;
+            }
+
+            .img img{
+                width: 50px;
+                height: 50px;
+            }
+            nav img{
+                width: 100%;
+                cursor: pointer;
+                margin: 5px 10px;
+
+            }
+
+            nav h2 a{
+                text-decoration: none;
+                color: white;
+                font-family: 'Lilita One', sans-serif;
+            }
+
+            nav h2:hover{
+                cursor: pointer;
+            }
+            nav ul{ 
+                flex: 1;
+                text-align: right;
+                margin: 0 20px;
+            }
+
+            nav ul li{
+                font-size: 16pt;
+                padding-left: 50px;
+                display: inline-block;
+                list-style: none;
+                margin: 0 40px;
+            }
+
+            nav ul li a{
+                border-radius: 18px;
+                align-items: center;
+                padding: 8px 20px 11px 20px;
+                transition: 300ms all ease;
+                text-decoration: none;
+                color: white;
+            }
+
+            nav ul a:hover{
+                background-color: rgba(255, 255, 255, 0.186);
+                border-radius: 25px;
+            }
+        </style>
+
+        {% block head %} {% endblock %}
+    </head>
+
+    <body>
+        <div class="hero">
+            <nav>
+                <div class="img"><img src="{{ url_for('static', filename='img/image.png') }}" alt="Logo"></div>
+                <h2 class="logo_text"><a href="/">Mo' INFO</a></h2>
+    
+                <ul>
+                    <li><a href="/find">Find</a></li>
+                    <li><a href="/create">Create</a></li>
+                    <li><a href="/notes">Notetaker</a></li>
+                    <li><a href="/about">About</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        {% block body %} {% endblock %}
+    </body>
+</html>
